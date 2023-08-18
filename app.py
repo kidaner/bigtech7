@@ -52,21 +52,5 @@ def index():
     return render_template('index.html', summary=summary, segments=segments, products=products, management_commentary=management_commentary, analyst_questions=analyst_questions)
 
 
-@app.route('/autocomplete', methods=['GET'])
-def autocomplete():
-    search = request.args.get('q')
-    suggestions = [
-        ("AAPL", "Apple"),
-        ("MSFT", "Microsoft"),
-        ("GOOG", "Google"),
-        ("AMZN", "Amazon"),
-        ("NVDA", "Nvidia"),
-        ("META", "Meta"),
-        ("TSLA", "Tesla")
-    ]
-    results = [s for s in suggestions if search.lower() in s[1].lower()]
-    return jsonify(results)
-
-
 if __name__ == "__main__":
     app.run(debug=True)
